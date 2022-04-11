@@ -11,7 +11,6 @@ func getAge(dob string) int {
 	birthday, _ := time.Parse(layout, dob)
 	now := time.Now().Format(layout)
 	today, _ := time.Parse(layout, now)
-
 	ty, tm, td := today.Date()
 	by, bm, bd := birthday.Date()
 	today = time.Date(ty, tm, td, 0, 0, 0, 0, time.UTC)
@@ -19,14 +18,20 @@ func getAge(dob string) int {
 	if today.Before(birthday) {
 		return 0
 	}
-	return ty - by
+	age := ty - by
+	anniversary := birthday.AddDate(age, 0, 0)
+	if anniversary.After(today) {
+		age--
+	}
+	return age
 
 }
 
 func main() {
 	var dob string
 	var age int
+	fmt.Println("Enter dob in MM-DD-YYYY format")
 	fmt.Scan(&dob)
 	age = getAge(dob)
-	fmt.Println(age)
+	fmt.Println("age=", age)
 }
