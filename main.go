@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-const layout = "01-02-2006"
+const layout = "01-02-2008"
 
 func getAge(dob string) int {
 	birthday, _ := time.Parse(layout, dob)
