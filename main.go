@@ -9,7 +9,6 @@ const layout = "01-02-2008"
 
 func getAge(dob string) int {
 	birthday, _ := time.Parse(layout, dob)
-	// asdasd
 	now := time.Now().Format(layout)
 	today, _ := time.Parse(layout, now)
 	ty, tm, td := today.Date()
